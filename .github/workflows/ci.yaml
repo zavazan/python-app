@@ -31,4 +31,4 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: zavazan/python-app:${{ env.COMMIT_ID }}
+          tags: xofxofxof123/python-app:${{ env.COMMIT_ID }}
