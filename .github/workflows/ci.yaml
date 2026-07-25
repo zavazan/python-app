@@ -20,6 +20,10 @@ jobs:
 
       - name: Set 6-char SHA as Env Variable
         run: echo "COMMIT_ID=${GITHUB_SHA::6}" >> $GITHUB_ENV
+        
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
 
       -
         name: Build and push
