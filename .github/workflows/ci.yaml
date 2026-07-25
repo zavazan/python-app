@@ -11,16 +11,17 @@ jobs:
   docker:
     runs-on: self-hosted
     steps:
+
+      - name: Set 6-char SHA as Env Variable
+        shell: bash
+        run: |
+          echo "COMMIT_ID=${GITHUB_SHA::6}" >> $GITHUB_ENV
       -
         name: Login to Docker Hub
         uses: docker/login-action@v4
         with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Set 6-char SHA as Env Variable
-        run: echo "COMMIT_ID=${GITHUB_SHA::6}" >> $GITHUB_ENV
-        
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
